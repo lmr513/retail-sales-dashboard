@@ -1,0 +1,1 @@
+NEXT STEPS\n1. Extract this ZIP.\n2. Create a public GitHub repository.\n3. Upload app.py, requirements.txt, README.md, and SampleSuperstore.csv.\n4. Deploy on Streamlit Community Cloud using app.py as the main file.\n5. Submit the GitHub URL and Streamlit URL.\n
