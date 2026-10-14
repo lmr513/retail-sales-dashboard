@@ -30,7 +30,7 @@ def load_data():
 
 df = load_data()
 
-st.title("Retail Sales Decision Dashboard")
+st.title("Team 4 — Retail Sales Decision Dashboard")
 st.caption(
     "For retail managers: monitor sales and profitability "
     "and identify areas that may require business action."
