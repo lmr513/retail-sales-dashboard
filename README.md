@@ -1,130 +1,111 @@
 # Retail Sales Decision Dashboard
 
-## 1. Business Purpose
+## Project Overview
 
-### Target User
+The Retail Sales Decision Dashboard is an interactive business intelligence application built with Python, Pandas, Matplotlib, and Streamlit. It helps retail managers explore sales performance, profitability, product categories, customer segments, and regional differences.
 
-The primary user is a retail store manager who monitors sales and profitability across product categories, customer segments, and geographic regions. The manager reviews the dashboard weekly to identify areas that may require further investigation.
+The dashboard uses the Sample Superstore dataset and provides interactive filters to support data-driven business decisions.
 
-### Business Decision
+## Project Objectives
 
-The dashboard helps the manager identify product categories or customer segments with high sales but relatively low profit. If this pattern appears, the manager can investigate discounts, product costs, and pricing before deciding whether to adjust promotional strategies.
+- Monitor overall sales and profit performance.
+- Compare sales and profitability across product categories.
+- Identify differences in profitability between customer segments.
+- Explore regional sales performance.
+- Examine monthly sales trends over time.
+- Investigate the relationship between discounts and profitability.
 
-### Why a Dashboard?
+## Dashboard Features
 
-Without a dashboard, the manager may need to manually filter spreadsheets and compare sales and profit across multiple categories and regions. This dashboard brings key performance indicators and supporting comparisons together in one place, allowing the manager to investigate the same business questions regularly.
+- **Key Performance Indicators:** Total sales, total profit, profit margin, and number of records.
+- **Order Date Filter:** Select a date range to analyze a specific period.
+- **Interactive Filters:** Filter results by region, product category, customer segment, and state.
+- **Monthly Sales Trend:** Examine how sales change over time.
+- **Category Analysis:** Compare sales and profit across product categories.
+- **Segment Analysis:** Compare profitability across customer segments.
+- **Regional Analysis:** Identify states with the highest sales.
+- **Discount Analysis:** Compare sales and profitability at different discount levels.
+- **Sub-Category Analysis:** Review sales, profit, and quantity by product sub-category.
+- **Data Preview and Export:** View filtered records and download them as a CSV file.
 
-A dashboard is more useful than a one-time report when the manager needs to review performance repeatedly and interactively explore different parts of the business.
+## Dataset
 
-## 2. Dataset
+The project uses `SampleSuperstore.csv`, which contains retail transaction information.
 
-The project uses the Sample Superstore dataset, which contains 9,994 records and 13 columns.
+Important fields include:
 
-The dataset includes sales transactions and information about products, customers, and geographic regions. Key variables include:
+- Order Date and Ship Date
+- Sales, Profit, Quantity, and Discount
+- Category and Sub-Category
+- Region, State, and City
+- Segment and Ship Mode
 
-- Sales and Profit
-- Quantity and Discount
-- Product Category and Sub-Category
-- Region, State, and Customer Segment
+The dashboard uses Order Date to filter records and generate the monthly sales trend. Results change according to the selected filters.
 
-Each row represents a recorded sales order line. The dataset is used to analyze sales performance and profitability across different business dimensions.
+## Technology Stack
 
-**Data limitation:** The CSV file used in this project does not contain an order-date column. Therefore, monthly trends and time-series analysis cannot be performed using the available data.
+- Python
+- Pandas
+- Matplotlib
+- Streamlit
 
-## 3. Dashboard Features
+## Project Structure
 
-The dashboard includes:
-
-- Key performance indicators: Total Sales, Total Profit, Profit Margin, and Record Count
-- Sales and profit by product category
-- Profit by customer segment
-- Top 10 states by sales
-- Discount and profitability analysis
-- Sub-category performance table
-- Interactive filters for exploring the data
-- Filtered-data preview and CSV download
-
-These features help the manager compare business performance across product categories, customer segments, and locations.
-
-## 4. Business Questions
-
-The dashboard is designed to help answer the following questions:
-
-1. Which product categories generate the highest sales and profit?
-2. Which customer segments contribute the most profit?
-3. Which states have the highest sales?
-4. How are discount levels associated with profitability?
-5. Which product sub-categories may require further investigation because of weak profitability?
-
-The dashboard supports investigation rather than automatically making business decisions. Managers should consider additional information before changing prices, discounts, or product strategies.
-
-## 5. Exploratory Data Analysis and Design Choices
-
-Before building the dashboard, the dataset was reviewed to understand its structure, variables, and potential business uses.
-
-The dashboard prioritizes four headline metrics: Total Sales, Total Profit, Profit Margin, and Record Count. These metrics summarize overall sales activity and profitability.
-
-Supporting charts compare sales and profit across product categories, customer segments, and states. Interactive filters allow users to investigate different regions, categories, customer segments, and states without viewing the entire dataset at once.
-
-The dashboard does not include monthly sales trends because the available CSV file has no order-date column. It also does not include forecasting because the dataset alone does not provide sufficient time-series information for a meaningful forecast.
-
-One important limitation is that an association between discounts and profit does not establish that discounts cause lower profit. Profitability can also be affected by product mix, costs, and other business conditions.
-
-## 6. Review Frequency and Intended Data Refresh
-
-The proposed dashboard is intended for weekly review by a retail store manager.
-
-In a production environment, the data could be refreshed nightly if updated transaction data were available. The manager could review the dashboard each week and investigate categories or customer segments with high sales but weak profitability.
-
-For example, if a category consistently shows strong sales but low or negative profit, the manager could investigate discount levels, product costs, and pricing before taking action.
-
-The current dataset is a static CSV file, so the deployed dashboard does not automatically receive new transactions. The data period should be verified from the original dataset documentation before reporting a specific date range.
-
-If the data becomes outdated, the manager may make decisions based on business conditions that no longer reflect current performance. A production version should display the latest data-update date.
-
-## 7. Limitations
-
-This project provides descriptive analysis of a sample retail dataset. Its findings should be interpreted with the following limitations in mind:
-
-- The available CSV file has no order-date column, preventing time-series analysis.
-- The dataset is static and does not automatically update with new transactions.
-- The analysis identifies patterns and associations but does not establish causation.
-- The results may not represent every retail business or current market conditions.
-- Decisions about pricing, discounts, and product strategies should consider additional information, such as product costs and operational constraints.
-
-## 8. Run Locally
-
-Python and the required packages must be installed.
-
-Install the dependencies:
-
-```bash
-pip install -r requirements.txt
+```text
+retail-sales-dashboard/
+├── app.py
+├── eda.py
+├── SampleSuperstore.csv
+├── requirements.txt
+├── README.md
+└── START_HERE.txt
 ```
 
-Start the dashboard:
+## Run Locally
+
+1. Clone or download this repository.
+2. Install the required packages:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Start the dashboard:
+
+   ```bash
+   streamlit run app.py
+   ```
+
+4. Open the local URL provided by Streamlit.
+
+## Exploratory Data Analysis
+
+Run the following command to inspect the dataset and generate analysis outputs:
 
 ```bash
-streamlit run app.py
+python eda.py
 ```
 
-The terminal will display a local URL where the dashboard can be opened.
+The script checks data quality, summarizes key business metrics, and saves charts in the project directory.
 
-For deployment, use the Python version required by the course and supported by the selected dependencies.
+## Business Questions
 
-## 9. Deployment
+This dashboard helps answer questions such as:
 
-The application is deployed using Streamlit Community Cloud.
+1. How do total sales and profit change over time?
+2. Which product categories generate the most sales and profit?
+3. Which customer segments contribute the most profit?
+4. Which states have the highest sales?
+5. How do discounts relate to profitability?
+6. Which sub-categories have strong sales but weak or negative profit?
 
-To deploy:
+## Limitations
 
-1. Create a public GitHub repository.
-2. Upload `app.py`, `requirements.txt`, `README.md`, and `SampleSuperstore.csv`, along with any other files required by the application.
-3. Sign in to [Streamlit Community Cloud](https://share.streamlit.io/) with GitHub.
-4. Create an app and select the repository and branch.
-5. Set the main file path to `app.py`.
-6. Deploy and test the application.
+- The analysis depends on the records available in the supplied dataset.
+- Historical results do not necessarily represent future performance.
+- Observed relationships between discounts and profit do not, by themselves, establish causation.
+- Business recommendations should consider additional factors such as operating costs, inventory, and customer behavior.
 
-**GitHub Repository:** https://github.com/lmr513/retail-sales-dashboard
+## Deployment
 
-**Live Dashboard:** https://retail-sales-dashboard-3uxzu47psocbb5puvmgsps.streamlit.app/
+The application can be deployed using Streamlit Community Cloud by connecting the GitHub repository and selecting `app.py` as the application entry point.
